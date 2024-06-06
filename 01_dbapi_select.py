@@ -40,5 +40,14 @@ def inserir_muitos(conexao, cursor, dados):
 def recuperar_cliente(cursor, id):
     cursor.execute("SELECT * FROM clientes WHERE id=?", (id,))
     return cursor.fetchone()
+
+
+def listar_clientes(cursor):
+    return cursor.execute("SELECT * FROM clientes ORDER BY nome;")
+
 cliente = recuperar_cliente(cursor, 2)
 print(cliente)
+
+clientes = listar_clientes(cursor)
+for cliente in clientes:
+    print(cliente)
